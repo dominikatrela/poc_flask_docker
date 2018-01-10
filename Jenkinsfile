@@ -3,13 +3,14 @@ pipeline {
 
 
     stages {
-        //stage('get_latest_version') {
-        //    steps {
-        //        git branch: 'master',
-        //        credentialsId: 'dominikatrela',
-        //        url: 'https://github.com/dominikatrela/poc_flask_docker/'
-        //    }
-        //}
+        stage('get_latest_version') {
+            steps {
+                deleteDir()
+                git branch: 'master',
+                credentialsId: 'dominikatrela',
+                url: 'https://github.com/dominikatrela/poc_flask_docker/'
+            }
+        }
         stage('application_up') {
             steps {
                 sh 'docker --version'
