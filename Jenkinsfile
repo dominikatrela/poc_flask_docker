@@ -23,7 +23,10 @@ pipeline {
         stage('do_stuff') {
             steps {
                 sh 'sleep 1'
-                sh 'curl http://10.10.45.20:5000/test'
+                sh curl -s -o /dev/null -w '%{http_code}' http://10.10.45.20:5000/test| grep '200' &> /dev/null
+                    if [ $? == 0 ]; then
+                        echo "matched"
+                    fi
 
 
             }
