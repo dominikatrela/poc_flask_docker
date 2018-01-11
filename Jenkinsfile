@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+    
         stage('get_latest_version') {
             steps {
                 deleteDir()
