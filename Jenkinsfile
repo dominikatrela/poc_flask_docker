@@ -1,7 +1,6 @@
 pipeline {
     agent any
 
-
     stages {
         stage('get_latest_version') {
             steps {
@@ -17,14 +16,12 @@ pipeline {
                 sh 'docker-compose down'
                 sh 'docker-compose up -d'
 
-
             }
         }
         stage('do_stuff') {
             steps {
                 sh 'sleep 1'
                 sh ./check_for_200.sh
-
 
             }
         }
