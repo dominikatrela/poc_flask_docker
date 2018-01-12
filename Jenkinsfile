@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-    
+
         stage('get_latest_version') {
             steps {
                 deleteDir()
@@ -22,7 +22,7 @@ pipeline {
         stage('do_stuff') {
             steps {
                 sh 'sleep 1'
-                sh ./check_for_200.sh
+                sh './check_for_200.sh'
 
             }
         }
