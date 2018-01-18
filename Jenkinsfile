@@ -21,7 +21,6 @@ pipeline {
         }
         stage('check_if_page_is_up') {
             steps {
-                sh 'sleep 1'
                 sh 'make run-test-for-checking-if-page-is-up'
 
             }
@@ -29,7 +28,6 @@ pipeline {
 
         stage('test_page') {
             steps {
-                sh 'sleep 1'
                 sh 'make run-test-hits'
 
             }
