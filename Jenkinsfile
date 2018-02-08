@@ -6,9 +6,7 @@ pipeline {
         stage('get_latest_version') {
             steps {
                 deleteDir()
-                git branch: 'master',
-                credentialsId: 'dominikatrela',
-                url: 'https://github.com/dominikatrela/poc_flask_docker/'
+                git branch: 'master', credentialsId: '5fad5bee-c7dd-4776-b766-9db845450257', url: 'https://github.com/dominikatrela/poc_flask_docker/'
             }
         }
         stage('application_up') {
