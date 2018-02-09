@@ -1,12 +1,19 @@
 pipeline {
-    agent any
+    agent {
+        label 'master'
+    }
+	environment {
+        REPO_URL = "${POC_FLASC_DOCER_REPO}"
+	CREDENTIALS = "${GITHUB_CREDENTIALS_ID}"
+	BRANCH_NAME = "${BRANCH_NAME}"
+    }
 
     stages {
 
         stage('get_latest_version') {
             steps {
                 deleteDir()
-                git branch: 'master', credentialsId: '5fad5bee-c7dd-4776-b766-9db845450257', url: 'https://github.com/dominikatrela/poc_flask_docker/'
+                git branch: BRANCH_NAME, credentialsId: CREDENTIALS, url: REPO_URL
             }
         }
         stage('application_up') {
