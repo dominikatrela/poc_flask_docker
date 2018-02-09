@@ -1,5 +1,3 @@
 #!/bin/sh
 
-which python
-pip freeze
-python first_test.py
+python3 first_test.py
