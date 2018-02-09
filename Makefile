@@ -5,3 +5,7 @@ run-test-for-checking-if-page-is-up:
 run-test-hits:
 	sleep 1
 	./test_hits.sh
+
+run-gui-test:
+	sleep 1
+	./gui_test.sh

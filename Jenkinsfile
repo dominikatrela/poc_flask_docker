@@ -33,7 +33,7 @@ pipeline {
 
 	stage('test_gui') {
             steps {
-                sh 'first_test.py'
+                sh 'make run-gui-test.py'
 
             }
         }
