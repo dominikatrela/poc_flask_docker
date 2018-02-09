@@ -43,6 +43,7 @@ pipeline {
 
 	stage('test_gui') {
             steps {
+		sh 'chromedriver --version'    
                 sh 'make run-gui-test'
 
             }
