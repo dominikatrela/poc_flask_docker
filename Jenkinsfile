@@ -31,7 +31,7 @@ pipeline {
             }
         }
 
-		stage('test_run_page') {
+	stage('test_gui') {
             steps {
                 sh 'first_test.py'
 
