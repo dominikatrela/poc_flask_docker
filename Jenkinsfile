@@ -45,19 +45,19 @@ pipeline {
 
             }
         }
-    	post {
-        	always {
-            	echo 'Always Hello!'
-        	}
-        	changed {
-            	echo 'Something changed Hello!'
-        	}
-        	success {
-            	echo 'Success Hello!'
-        	}
-        	failure {
-            	echo 'You failed no Hello for you!'
-        	}
-    	}
+    }
+post {
+        always {
+            echo 'Always Hello!'
+        }
+        changed {
+            echo 'Something changed Hello!'
+        }
+        success {
+            echo 'Success Hello!'
+        }
+        failure {
+            echo 'You failed no Hello for you!'
+        }
     }
 }
