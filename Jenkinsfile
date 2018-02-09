@@ -3,7 +3,7 @@ pipeline {
         label 'master'
     }
 	environment {
-        REPO_URL = "${POC_FLASC_DOCER_REPO}"
+        REPO_URL = "${POC_FLASK_DOCKER_REPO}"
 	CREDENTIALS = "${GITHUB_CREDENTIALS_ID}"
 	BRANCH_NAME = "${BRANCH_NAME}"
     }
@@ -13,7 +13,7 @@ pipeline {
         stage('get_latest_version') {
             steps {
                 deleteDir()
-                git branch: BRANCH_NAME, credentialsId: CREDENTIALS, url: REPO_URL
+		    git branch: ${BRANCH_NAME}, credentialsId: CREDENTIALS, url: REPO_URL
             }
         }
         stage('application_up') {
