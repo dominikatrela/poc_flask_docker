@@ -1,11 +1,13 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-driver = webdriver.Remote(
-   command_executor='http://XX.XX.XX.XX:4444/wd/hub',
-   desired_capabilities=DesiredCapabilities.CHROME)
+# from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+#
+# driver = webdriver.Remote(
+#     command_executor='XXX:4444/wd/hub',
+#     desired_capabilities=DesiredCapabilities.CHROME)
+
 
 class PythonOrgSearch(unittest.TestCase):
 
