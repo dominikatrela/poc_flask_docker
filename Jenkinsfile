@@ -18,6 +18,9 @@ pipeline {
         }
         stage('application_up') {
             steps {
+		sh 'python --version'
+		sh 'pip freeze'
+		sh 'which python'    
                 sh 'docker --version'
                 sh 'docker-compose down'
                 sh 'docker-compose up -d'
