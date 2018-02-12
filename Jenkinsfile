@@ -12,7 +12,6 @@ pipeline {
 
         stage('get_latest_version') {
             steps {
-                deleteDir()
 		    git branch: BRANCH_NAME, credentialsId: CREDENTIALS, url: REPO_URL
             }
         }
