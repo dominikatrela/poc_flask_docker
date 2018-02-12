@@ -12,8 +12,11 @@ from selenium.webdriver.common.keys import Keys
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome()
+        service_log_path = "{}/chromedriver.log".format('/home/jenkins')
+        service_args = ['--verbose']
+        self.driver = webdriver.Chrome(service_args=service_args, service_log_path=service_log_path)
 
+        
     def test_search_in_python_org(self):
         driver = self.driver
         driver.get("http://www.python.org")
