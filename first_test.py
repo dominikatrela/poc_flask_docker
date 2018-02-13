@@ -1,6 +1,8 @@
 import unittest
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
+import os
 
 # from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 #
@@ -12,9 +14,9 @@ from selenium.webdriver.common.keys import Keys
 class PythonOrgSearch(unittest.TestCase):
 
     def setUp(self):
-        service_log_path = "{}/chromedriver.log".format('/home/jenkins')
-        service_args = ['--verbose']
-        self.driver = webdriver.Chrome(service_args=service_args, service_log_path=service_log_path)
+        options = Options()
+        options.add_argument("headless")
+        self.driver = webdriver.Chrome(chrome_options=options)
 
         
     def test_search_in_python_org(self):
