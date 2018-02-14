@@ -11,7 +11,7 @@ import os
 #     desired_capabilities=DesiredCapabilities.CHROME)
 
 
-class PythonOrgSearch(unittest.TestCase):
+class SearchTextOnPage(unittest.TestCase):
 
     def setUp(self):
         options = Options()
@@ -22,7 +22,8 @@ class PythonOrgSearch(unittest.TestCase):
     def test_search_in_python_org(self):
         driver = self.driver
         driver.get("http://10.10.45.20:5000/")
-        elem = driver.find_element_by_xpath("//body[contains(text(),'costam costam :)')]")
+        driver.implicitly_wait(5)
+        driver.find_element_by_xpath("//body[contains(text(),'costam costam :)')]")
         assert "costam costam :)" in driver.page_source
 
 
