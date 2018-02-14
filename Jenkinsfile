@@ -73,7 +73,8 @@ pipeline {
                          sh 'make run-gui-test2'
                     }
                 }
-            }
+           }
+        }
     }
 post {
         always {
