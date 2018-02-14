@@ -2,20 +2,21 @@ pipeline {
     agent {
         label 'master'
     }
-	environment {
+    environment {
         REPO_URL = "${POC_FLASK_DOCKER_REPO}"
-	CREDENTIALS = "${GITHUB_CREDENTIALS_ID}"
-	BRANCH_NAME = "${BRANCH_NAME}"
+        CREDENTIALS = "${GITHUB_CREDENTIALS_ID}"
+        BRANCH_NAME = "${BRANCH_NAME}"
     }
 
     stages {
 
         stage('get_latest_version') {
             steps {
-		deleteDir()
-		    git branch: BRANCH_NAME, credentialsId: CREDENTIALS, url: REPO_URL
-            }
-        }
+              deleteDir()
+              git branch: BRANCH_NAME, credentialsId: CREDENTIALS, url: REPO_URL
+
+          }
+      }
         stage('application_up') {
             steps {
                 sh 'docker --version'
@@ -38,22 +39,14 @@ pipeline {
             }
         }
 
-	stage('test_gui') {
+        stage('test_gui') {
             steps {
                 sh 'make run-gui-test'
 
             }
         }
 
-        stage('application_down') {
-            steps {
-                sh 'docker-compose down'
-
-
-            }
-        }
-
-                stage('parallel_stage') {
+        stage('parallel_stage') {
             parallel {
                 stage('test A') {
                     agent {
@@ -61,7 +54,7 @@ pipeline {
                     }
                     steps {
                         echo "testA"
-                         sh 'make run-gui-test'
+                        sh 'make run-gui-test'
                     }
                 }
                 stage('test B') {
@@ -70,13 +63,20 @@ pipeline {
                     }
                     steps {
                         echo "testB"
-                         sh 'make run-gui-test2'
+                        sh 'make run-gui-test2'
                     }
                 }
-           }
+            }
+        }
+
+        stage('application_down') {
+            steps {
+                sh 'docker-compose down'
+            }
         }
     }
-post {
+
+    post {
         always {
             echo 'Always Hello!'
         }
