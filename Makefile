@@ -9,3 +9,7 @@ run-test-hits:
 run-gui-test:
 	sleep 1
 	./gui_test.sh
+
+run-gui-test2:
+	sleep 1
+	./gui_test2.sh

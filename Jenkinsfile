@@ -18,9 +18,6 @@ pipeline {
         }
         stage('application_up') {
             steps {
-		sh 'python --version'
-		sh 'pip freeze'
-		sh 'which python'    
                 sh 'docker --version'
                 sh 'docker-compose down'
                 sh 'docker-compose up -d'
@@ -43,8 +40,6 @@ pipeline {
 
 	stage('test_gui') {
             steps {
-		sh 'chromedriver --version' 
-		sh 'which chromedriver'    
                 sh 'make run-gui-test'
 
             }
@@ -57,6 +52,28 @@ pipeline {
 
             }
         }
+
+                stage('parallel_stage') {
+            parallel {
+                stage('test A') {
+                    agent {
+                        label "testA"
+                    }
+                    steps {
+                        echo "testA"
+                         sh 'make run-gui-test'
+                    }
+                }
+                stage('test B') {
+                    agent {
+                        label "testB"
+                    }
+                    steps {
+                        echo "testB"
+                         sh 'make run-gui-test2'
+                    }
+                }
+            }
     }
 post {
         always {
